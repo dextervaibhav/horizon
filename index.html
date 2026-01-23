@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Wealth | Strategic Investment Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a237e;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #4caf50;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #1a237e;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.2);
+        }
+
+        /* WhatsApp CTA Button */
+        .whatsapp-cta {
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(135deg, #128C7E 0%, #25d366 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eaf6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1a237e;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a237e 0%, #4caf50 100%);
+            border-radius: 40px 0 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            color: #1a237e;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #1a237e;
+        }
+
+        /* Performance */
+        .performance {
+            padding: 100px 0;
+            background: #f8f9ff;
+        }
+
+        .performance-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .performance-chart {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eaf6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a237e;
+            font-weight: 600;
+        }
+
+        /* Investment Plans */
+        .plans {
+            padding: 100px 0;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .plan-card {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .plan-card.featured {
+            border: 2px solid #4caf50;
+            position: relative;
+            transform: scale(1.05);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4caf50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 24px 0;
+        }
+
+        .plan-price span {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .plan-features li i {
+            color: #4caf50;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        /* WhatsApp Contact Section in Footer */
+        .whatsapp-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(37, 211, 102, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-contact:hover {
+            background: rgba(37, 211, 102, 0.2);
+        }
+        
+        .whatsapp-contact a {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .whatsapp-contact i {
+            color: #25d366;
+        }
+
+        /* WhatsApp Quick Actions */
+        .whatsapp-quick-actions {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+        
+        .quick-action-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideIn 0.5s forwards;
+        }
+        
+        .quick-action-item:hover {
+            background: #f0f8ff;
+            transform: translateX(-5px);
+        }
+        
+        .quick-action-item:nth-child(1) { animation-delay: 0.1s; }
+        .quick-action-item:nth-child(2) { animation-delay: 0.2s; }
+        .quick-action-item:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a237e;
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #1a237e;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-image {
+                display: none;
+            }
+            
+            .performance-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-quick-actions {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            
+            .nav.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+            }
+            
+            .whatsapp-cta {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+            
+            .header-content .cta-button {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">Horizon<span>Wealth</span></a>
+            
+            <nav class="nav">
+                <a href="#features">Strategies</a>
+                <a href="#performance">Performance</a>
+                <a href="#plans">Plans</a>
+                <a href="#" class="whatsapp-nav" data-action="about">About</a>
+                <a href="#" class="whatsapp-nav" data-action="contact">Contact</a>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <button class="cta-button" id="mainCta">Start Investing</button>
+            <button class="whatsapp-cta" id="whatsappHeaderBtn">
+                <i class="fab fa-whatsapp"></i>
+                Chat Now
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Strategic Wealth Growth Through Intelligent Investing</h1>
+                <p>Partner with expert portfolio managers to explore potential growth opportunities across global markets. Our data-driven approach focuses on long-term value creation.</p>
+                
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button class="cta-button" id="heroCta">Schedule Your Consultation</button>
+                    <button class="whatsapp-cta" id="heroWhatsappBtn">
+                        <i class="fab fa-whatsapp"></i>
+                        Quick Chat
+                    </button>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>₹2.1Cr+</h3>
+                        <p>Assets Managed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- This would typically contain an illustration or chart -->
+                <div style="color: white; text-align: center; padding: 40px;">
+                    <i class="fas fa-chart-line" style="font-size: 80px; margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 28px; margin-bottom: 10px;">Growth Visualized</h3>
+                    <p>Strategic investment performance metrics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Our Investment Approach</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Diversified Portfolios</h3>
+                    <p>Strategic allocation across multiple asset classes designed to balance risk while pursuing growth opportunities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Research-Driven</h3>
+                    <p>Comprehensive market analysis and due diligence inform every investment decision we make.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Risk Management</h3>
+                    <p>Advanced risk assessment protocols and continuous monitoring to protect your capital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance -->
+    <section id="performance" class="performance">
+        <div class="container">
+            <h2 class="section-title">Historical Perspective</h2>
+            <div class="performance-content">
+                <div>
+                    <h3 style="font-size: 32px; margin-bottom: 24px; color: #1a237e;">Understanding Market Returns</h3>
+                    <p style="margin-bottom: 20px; font-size: 18px;">Investment returns have historically varied across different market cycles and asset classes. While some periods have seen significant growth, others have experienced volatility.</p>
+                    <p style="margin-bottom: 20px; font-size: 18px;">Our focus is on building resilient portfolios that aim to navigate various market conditions through strategic allocation and active management.</p>
+                    <p style="font-size: 18px;">It's important to note that all investments carry risk, and past performance is not a reliable indicator of future results.</p>
+                    
+                    <button class="whatsapp-cta" style="margin-top: 30px;" id="performanceWhatsappBtn">
+                        <i class="fab fa-whatsapp"></i>
+                        Discuss Risk Management
+                    </button>
+                </div>
+                <div class="performance-chart">
+                    <h4 style="margin-bottom: 24px; color: #1a237e;">Sample Historical Growth Pattern</h4>
+                    <div class="chart-placeholder">
+                        <div style="text-align: center;">
+                            <i class="fas fa-chart-line" style="font-size: 48px; margin-bottom: 20px; color: #1a237e;"></i>
+                            <p>Hypothetical Growth Chart</p>
+                            <p style="font-size: 14px; margin-top: 10px;">For illustrative purposes only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" class="plans">
+        <div class="container">
+            <h2 class="section-title">Investment Plans</h2>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3>Conservative Growth</h3>
+                    <p>Lower risk, steady approach</p>
+                    <div class="plan-price">₹10,000<span> minimum</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> ROI: 20-25 % P.A. </li>
+                        <li><i class="fas fa-check"></i> Quarterly portfolio reviews</li>
+                        <li><i class="fas fa-check"></i> Capital preservation focus</li>
+                        <li><i class="fas fa-check"></i> Annual performance reports</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                    </ul>
+                    <button class="cta-button plan-cta" data-plan="Conservative Growth" style="width: 100%;">Learn More</button>
+                </div>
+                
+                <div class="plan-card featured">
+                    <div class="plan-badge">Most Popular</div>
+                    <h3>Balanced Growth</h3>
+                    <p>Moderate risk, balanced approach</p>
+                    <div class="plan-price">₹25,000<span> minimum</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> ROI: 20-25 % P.A. </li>
+                        <li><i class="fas fa-check"></i> Monthly portfolio reviews</li>
+                        <li><i class="fas fa-check"></i> Active rebalancing</li>
+                        <li><i class="fas fa-check"></i> Quarterly performance reports</li>
+                        <li><i class="fas fa-check"></i> Priority phone support</li>
+                    </ul>
+                    <button class="whatsapp-cta plan-cta" data-plan="Balanced Growth" style="width: 100%;">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Started
+                    </button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>Aggressive Growth</h3>
+                    <p>Higher risk, growth-focused</p>
+                    <div class="plan-price">₹100,000<span> minimum</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> ROI: 20-30 % P.A. </li>
+                        <li><i class="fas fa-check"></i> Bi-weekly portfolio reviews</li>
+                        <li><i class="fas fa-check"></i> Alternative investments</li>
+                        <li><i class="fas fa-check"></i> Monthly performance reports</li>
+                        <li><i class="fas fa-check"></i> Dedicated advisor</li>
+                    </ul>
+                    <button class="cta-button plan-cta" data-plan="Aggressive Growth" style="width: 100%;">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horizon Wealth</h3>
+                    <p>Strategic investment management focused on long-term wealth creation through disciplined, research-driven approaches.</p>
+                    <div class="whatsapp-contact" style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/919453829097" target="_blank">
+                            Chat with us on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Investment Strategies</a></li>
+                        <li><a href="#performance">Performance</a></li>
+                        <li><a href="#plans">Plans</a></li>
+                        <li><a href="#" class="whatsapp-nav" data-action="client">Client Portal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Disclosures</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +91 9453829097</li>
+                        <li><i class="fas fa-envelope"></i> laplacejacobian@protonmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Noida Special Economy Zone</li>
+                        <li>
+                            <button class="whatsapp-cta" style="margin-top: 10px; padding: 8px 16px; font-size: 14px;" id="footerWhatsappBtn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp Us
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 Horizon Wealth Management. All rights reserved. | Registered Investment Advisor | SEC#: 801-123456</p>
+                <p style="margin-top: 10px; font-size: 14px;">Past performance is not indicative of future results. All investments involve risk.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919453829097?text=Hello%20Horizon%20Wealth,%20I'm%20interested%20in%20your%20investment%20services" 
+       class="whatsapp-float" 
+       target="_blank"
+       aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    </a>
+
+    <!-- WhatsApp Quick Actions Menu -->
+    <div class="whatsapp-quick-actions">
+        <div class="quick-action-item" data-action="help">
+            <i class="fas fa-question-circle"></i>
+            <span>Get Help</span>
+        </div>
+        <div class="quick-action-item" data-action="consultation">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Book Consultation</span>
+        </div>
+        <div class="quick-action-item" data-action="info">
+            <i class="fas fa-info-circle"></i>
+            <span>Request Info</span>
+        </div>
+    </div>
+
+    <script>
+        // WhatsApp phone number
+        const WHATSAPP_NUMBER = "919453829097";
+        
+        // Predefined messages for different actions
+        const MESSAGES = {
+            default: "Hello Horizon Wealth, I'm interested in your investment services",
+            help: "Hello, I need help with my investment plan",
+            consultation: "Hello, I want to schedule a consultation about investment options",
+            info: "Hello, can you send me more information about your services?",
+            plan: (planName) => `Hello, I'm interested in the ${planName} investment plan. Can you provide more details?`,
+            about: "Hello, I'd like to learn more about Horizon Wealth and your company background",
+            contact: "Hello, I need to contact Horizon Wealth for general inquiries",
+            client: "Hello, I have questions about the Horizon Wealth client portal"
+        };
+
+        // Function to open WhatsApp with a message
+        function openWhatsApp(message = MESSAGES.default) {
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav').classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Handle WhatsApp navigation links (About, Contact)
+        document.querySelectorAll('.whatsapp-nav').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const action = this.getAttribute('data-action');
+                openWhatsApp(MESSAGES[action]);
+                
+                // Close mobile menu if open
+                if(window.innerWidth <= 768) {
+                    document.querySelector('.nav').classList.remove('active');
+                }
+            });
+        });
+
+        // WhatsApp button handlers
+        document.getElementById('whatsappHeaderBtn').addEventListener('click', () => {
+            openWhatsApp();
+        });
+
+        document.getElementById('heroWhatsappBtn').addEventListener('click', () => {
+            openWhatsApp();
+        });
+
+        document.getElementById('heroCta').addEventListener('click', () => {
+            openWhatsApp(MESSAGES.consultation);
+        });
+
+        document.getElementById('mainCta').addEventListener('click', () => {
+            openWhatsApp();
+        });
+
+        document.getElementById('performanceWhatsappBtn').addEventListener('click', () => {
+            openWhatsApp(MESSAGES.help);
+        });
+
+        document.getElementById('footerWhatsappBtn').addEventListener('click', () => {
+            openWhatsApp();
+        });
+
+        // Plan CTA buttons
+        document.querySelectorAll('.plan-cta').forEach(button => {
+            button.addEventListener('click', function() {
+                const planName = this.getAttribute('data-plan');
+                if(this.classList.contains('whatsapp-cta')) {
+                    openWhatsApp(MESSAGES.plan(planName));
+                } else {
+                    openWhatsApp(MESSAGES.plan(planName));
+                }
+            });
+        });
+
+        // Quick action items
+        document.querySelectorAll('.quick-action-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const action = this.getAttribute('data-action');
+                openWhatsApp(MESSAGES[action]);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('.nav');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if(window.innerWidth <= 768 && 
+               nav.classList.contains('active') && 
+               !nav.contains(e.target) && 
+               !menuBtn.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Form submission for other CTA buttons
+        document.querySelectorAll('.cta-button:not(#mainCta):not(#heroCta):not(.plan-cta)').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Thank you for your interest. A financial advisor will contact you shortly to discuss investment opportunities and required disclosures.');
+            });
+        });
+
+        // Show WhatsApp quick actions on scroll
+        window.addEventListener('scroll', function() {
+            const quickActions = document.querySelector('.whatsapp-quick-actions');
+            if(window.scrollY > 500) {
+                quickActions.style.display = 'flex';
+            } else {
+                quickActions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
